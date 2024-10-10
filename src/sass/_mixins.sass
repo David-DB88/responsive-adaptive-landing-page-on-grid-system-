@@ -1,0 +1,16 @@
+@mixin respond($brackpoint)
+    @if $brackpoint == phone
+        @media only screen and (max-width: 400px)
+                @content
+    @if $brackpoint == tablet
+        @media only screen and (max-width: 830px)
+                @content
+    @if $brackpoint == laptop
+        @media only screen and (max-width: 1170px)
+            @content
+    
+    
+      
+    @if $brackpoint == big-screen
+        @media only screen and (min-width: 1800px)
+                @content

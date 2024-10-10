@@ -1,0 +1,33 @@
+.gamers
+    background: $color-blue-dark
+    grid-column: col-start 7 / full-end
+    display: grid
+    // grid-template-columns: max-content 
+    align-content: center
+    justify-content: center
+    grid-gap: 4rem 2rem 
+    @include respond(tablet)
+        grid-column: 1 / -1
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr))
+        align-content: center
+        justify-content: center
+        padding: 5rem 0
+    
+    &__box
+        display: grid
+        grid-template-columns: max-content max-content
+        align-content: center
+        justify-content: center
+        grid-gap: 4rem 2rem 
+            
+    &__img
+        width: 7rem
+    &__text
+        align-self: center
+    &__score
+        font-size: 1.6rem
+        color: $color-gray-dark
+        font-weight: 300
+    &__title
+        grid-column: 1 / -1
+        text-align: center

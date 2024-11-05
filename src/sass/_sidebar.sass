@@ -3,20 +3,73 @@
     grid-column: side-start / sid-end
     grid-row: 1 / -1
     display: flex
-    justify-content: center
+    flex-direction: column
+    justify-content: flex-start
+    align-items: center
     padding-top: 3.5rem
+    position: relative
+    transition: all 2s
     @include respond(tablet)
         grid-column: 1 / -1
         grid-row: 1 / 2
-        justify-content: end
-        align-items: center
-        padding: 0 3rem 0 0
-
+        padding-top: 3rem
+    &__btn 
+        
+        width: 5rem
+        height: 5rem
+        background: transparent   
+        position: absolute
+        top: 1.3rem
+        left: 50%
+        z-index: 10
+        transform: translate(-50%)
+    
+.menu
+    list-style: none
+    opacity: 0
+    width: 0
+    text-align: center
+    transform: translateX(-100%)
+    transition: all 0.2s cubic-bezier(0.68, -0.6, 0.32, 1.6)
+    @include respond(tablet)
+        transform: translateY(-100%)
+        transition: all 0.2s 
+    
+    &__item
+        margin: 0 auto
+        &:not(:last-child)
+            margin-bottom: 3rem
+            
+    &__link
+        &:link, &:visited
+            text-decoration: none
+            font-size: 1.6rem
+            font-weight: 300
+            text-transform: uppercase
+            color: $color-gray-light
+            text-align: center
+            transition: all .3s 
+            display: inline-block
+            background: linear-gradient(120deg, transparent 0, transparent 50%, $color-gray-light 50%)
+            background-size: 215%
+            padding: .5rem .2rem
+        &:hover, &:active
+            background-position: 100%
+            color: $color-green-dark
+            transform: translateY(-.3rem)
+.sidebar-isOpen:checked ~ .container > .sidebar > .menu
+    opacity: 1
+    width: 100%
+    transform: translateX(0)
+    @include respond(tablet)
+        transform: translateY(0)
 .hamburger
     border: none
     width: 4.5rem
     height: .2rem
     background-color: $color-gray-light
+    position: relative
+    
     &::before, &::after
         content: ''
         width: 4.5rem
@@ -29,3 +82,12 @@
         transform: translateY(-1.5rem)
     &::after
         transform: translateY(1.5rem)
+.sidebar-isOpen:checked ~ .container > .sidebar > .hamburger
+    background: transparent
+    &::before
+        position: absolute
+        left: .2rem
+        transform: rotate(45deg)
+.sidebar-isOpen:checked ~ .container > .sidebar > .hamburger
+    &::after
+        transform: rotate(-45deg)
